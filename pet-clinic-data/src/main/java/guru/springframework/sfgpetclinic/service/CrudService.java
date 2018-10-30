@@ -2,15 +2,15 @@ package guru.springframework.sfgpetclinic.service;
 
 import java.util.List;
 
-public interface ServiceBase<T, S> {
+public interface CrudService<T, ID> {
 
-    T findById(S id);
+    T findById(ID id);
 
-    void removeById(S id);
+    void removeById(ID id);
 
     List<T> findAll();
 
     T save(T object);
 
-    T update(S id, T object);
+    T update(ID id, T object);
 }
