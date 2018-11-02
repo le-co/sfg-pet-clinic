@@ -5,6 +5,7 @@ import guru.springframework.sfgpetclinic.service.CrudService;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public abstract class AbstractMapService<T, ID> {
 
@@ -19,7 +20,7 @@ public abstract class AbstractMapService<T, ID> {
     }
 
     List<T> findAll() {
-        return (List<T>) this.map.values();
+        return this.map.values().stream().collect(Collectors.toList());
     }
 
     T save(ID id, T object) {

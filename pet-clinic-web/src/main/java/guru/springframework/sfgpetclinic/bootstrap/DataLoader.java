@@ -2,6 +2,7 @@ package guru.springframework.sfgpetclinic.bootstrap;
 
 import guru.springframework.sfgpetclinic.model.Owner;
 import guru.springframework.sfgpetclinic.model.Pet;
+import guru.springframework.sfgpetclinic.model.Vet;
 import guru.springframework.sfgpetclinic.service.OwnerCrudService;
 import guru.springframework.sfgpetclinic.service.PetCrudService;
 import guru.springframework.sfgpetclinic.service.VetCrudService;
@@ -62,6 +63,24 @@ public class DataLoader implements CommandLineRunner {
         pet.setBirthDate(LocalDate.now());
         pet.setOwner(owner);
         this.petCrudServicel.save(pet);
+
+        Vet vet = new Vet();
+        vet.setId(1);
+        vet.setFirstName("Test");
+        vet.setLastName("1");
+        this.ownerCrudService.save(owner);
+
+        vet = new Vet();
+        vet.setId(2);
+        vet.setFirstName("Test");
+        vet.setLastName("1");
+        this.ownerCrudService.save(owner);
+
+        vet = new Vet();
+        vet.setId(2);
+        vet.setFirstName("Test");
+        vet.setLastName("1");
+        this.ownerCrudService.save(owner);
 
         System.out.println("========================================================");
         System.out.println("========================================================");
