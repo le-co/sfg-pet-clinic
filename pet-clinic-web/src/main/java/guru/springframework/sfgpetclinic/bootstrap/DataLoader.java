@@ -29,58 +29,58 @@ public class DataLoader implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         Owner owner = new Owner();
-        owner.setId(1);
+//        owner.setId(1);
         owner.setFirstName("Test");
         owner.setLastName("1");
         this.ownerCrudService.save(owner);
 
         Pet pet = new Pet();
-        pet.setId(1);
+//        pet.setId(1);
         pet.setBirthDate(LocalDate.now());
         pet.setOwner(owner);
         this.petCrudServicel.save(pet);
 
         owner = new Owner();
-        owner.setId(2);
+//        owner.setId(2);
         owner.setFirstName("Test");
         owner.setLastName("2");
         this.ownerCrudService.save(owner);
 
         pet = new Pet();
-        pet.setId(2);
+//        pet.setId(2);
         pet.setBirthDate(LocalDate.now());
         pet.setOwner(owner);
         this.petCrudServicel.save(pet);
 
         owner = new Owner();
-        owner.setId(3);
+//        owner.setId(3);
         owner.setFirstName("Test");
         owner.setLastName("3");
         this.ownerCrudService.save(owner);
 
         pet = new Pet();
-        pet.setId(3);
+//        pet.setId(3);
         pet.setBirthDate(LocalDate.now());
         pet.setOwner(owner);
         this.petCrudServicel.save(pet);
 
         Vet vet = new Vet();
-        vet.setId(1);
+//        vet.setId(1);
         vet.setFirstName("Test");
         vet.setLastName("1");
-        this.ownerCrudService.save(owner);
+        this.vetCrudService.save(vet);
 
         vet = new Vet();
-        vet.setId(2);
+//        vet.setId(2);
         vet.setFirstName("Test");
         vet.setLastName("1");
-        this.ownerCrudService.save(owner);
+        this.vetCrudService.save(vet);
 
         vet = new Vet();
-        vet.setId(2);
+//        vet.setId(3);
         vet.setFirstName("Test");
         vet.setLastName("1");
-        this.ownerCrudService.save(owner);
+        this.vetCrudService.save(vet);
 
         System.out.println("========================================================");
         System.out.println("========================================================");
