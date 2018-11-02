@@ -2,16 +2,15 @@ package guru.springframework.sfgpetclinic.service.map;
 
 import guru.springframework.sfgpetclinic.model.BaseEntity;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public abstract class AbstractMapService<T, ID> {
+public abstract class AbstractMapService<T extends BaseEntity, ID extends Integer> {
 
-    protected Integer id = 1;
-
-    private Map<ID, T> map = new HashMap<>();
+    private Map<Integer, T> map = new HashMap<>();
 
     T findById(ID id) {
         return this.map.get(id);
@@ -25,23 +24,24 @@ public abstract class AbstractMapService<T, ID> {
         return this.map.values().stream().collect(Collectors.toList());
     }
 
-    T save(ID id, T object) {
+    T save(T object) {
+        Integer id = this.nextValue();
+        if (object != null) {
+            object.setId(id);
+        }
         this.map.put(id, object);
-        this.nextValue();
         return object;
     }
 
     T update(ID id, T object) {
         this.removeById(id);
-        return this.save(id, object);
+        return this.map.put(id, object);
     }
 
-    void nextValue() {
-        List<BaseEntity> entities = (List<BaseEntity>) this.findAll();
-        if (entities != null)
-            for (BaseEntity entity : entities) {
-                id = entity.getId() > id ? entity.getId() : id;
-            }
-        id++;
+    Integer nextValue() {
+        Integer nextId = 0;
+        if (this.map.keySet() != null && this.map.keySet().size() > 0)
+            nextId = Collections.max(this.map.keySet());
+        return nextId + 1;
     }
 }

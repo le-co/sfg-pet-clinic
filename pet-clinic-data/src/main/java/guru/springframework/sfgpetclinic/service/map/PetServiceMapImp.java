@@ -29,8 +29,7 @@ public class PetServiceMapImp extends AbstractMapService<Pet, Integer> implement
 
     @Override
     public Pet save(Pet object) {
-        object.setId(this.id);
-        return super.save(this.id, object);
+        return super.save(object);
     }
 
     @Override

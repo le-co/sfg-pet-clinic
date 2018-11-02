@@ -34,8 +34,7 @@ public class OwnerServiceMapImp extends AbstractMapService<Owner, Integer> imple
 
     @Override
     public Owner save(Owner object) {
-        object.setId(this.id);
-        return super.save(this.id, object);
+        return super.save(object);
     }
 
 }
