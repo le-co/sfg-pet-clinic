@@ -1,5 +1,6 @@
 package guru.springframework.sfgpetclinic.service.map;
 
+import com.sun.istack.internal.NotNull;
 import guru.springframework.sfgpetclinic.model.BaseEntity;
 
 import java.util.Collections;
@@ -24,11 +25,10 @@ public abstract class AbstractMapService<T extends BaseEntity, ID extends Intege
         return this.map.values().stream().collect(Collectors.toList());
     }
 
-    T save(T object) {
+
+    T save(@NotNull T object) {
         Integer id = this.nextValue();
-        if (object != null) {
-            object.setId(id);
-        }
+        object.setId(id);
         this.map.put(id, object);
         return object;
     }
