@@ -11,6 +11,7 @@
         <th th:text="#{properties_default.id}">Id</th>
         <th th:text="#{properties_default.first_name}">First Name</th>
         <th th:text="#{properties_default.last_name}">Last Name</th>
+        <th th:text="#{properties_default.specialties}"></th>
         <th th:text="#{properties_default.action}">Action</th>
     </tr>
     </thead>
@@ -19,6 +20,11 @@
         <td th:text="${item.id}"></td>
         <td th:text="${item.firstName}"></td>
         <td th:text="${item.lastName}"></td>
+        <td>
+            <ul th:each="speciality : ${item.specialities}">
+                <li th:text="${speciality.description}"></li>
+            </ul>
+        </td>
         <td><a th:href="${'/vets/'+ item.id}">View</a></td>
     </tr>
     </tbody>
