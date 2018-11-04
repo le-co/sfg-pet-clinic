@@ -1,18 +1,17 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'home')}">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-<h1 th:text="'List all vets'">List all Owner...</h1>
-<table>
+<h1 th:text="#{vets}">List all Owner...</h1>
+<table id="vets" class="table table-striped">
     <thead>
     <tr>
-        <td>Id</td>
-        <td>First Name</td>
-        <td>Last Name</td>
-        <td>Action</td>
+        <th th:text="#{properties_default.id}">Id</th>
+        <th th:text="#{properties_default.first_name}">First Name</th>
+        <th th:text="#{properties_default.last_name}">Last Name</th>
+        <th th:text="#{properties_default.action}">Action</th>
     </tr>
     </thead>
     <tbody>
@@ -20,7 +19,7 @@
         <td th:text="${item.id}"></td>
         <td th:text="${item.firstName}"></td>
         <td th:text="${item.lastName}"></td>
-        <!--<td><a th:href=${'/vets/'+ item.id}">View</a></td>-->
+        <td><a th:href="${'/vets/'+ item.id}">View</a></td>
     </tr>
     </tbody>
 </table>

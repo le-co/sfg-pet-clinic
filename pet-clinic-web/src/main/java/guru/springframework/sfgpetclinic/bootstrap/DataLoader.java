@@ -30,8 +30,8 @@ public class DataLoader implements CommandLineRunner {
     public void run(String... args) throws Exception {
         Owner owner = new Owner();
 //        owner.setId(1);
-        owner.setFirstName("Test");
-        owner.setLastName("1");
+        owner.setFirstName("Leandro");
+        owner.setLastName("Costa");
         this.ownerCrudService.save(owner);
 
         Pet pet = new Pet();
@@ -41,9 +41,8 @@ public class DataLoader implements CommandLineRunner {
         this.petCrudServicel.save(pet);
 
         owner = new Owner();
-//        owner.setId(2);
-        owner.setFirstName("Test");
-        owner.setLastName("2");
+        owner.setFirstName("Juliana");
+        owner.setLastName("Barbosa");
         this.ownerCrudService.save(owner);
 
         pet = new Pet();
@@ -54,8 +53,8 @@ public class DataLoader implements CommandLineRunner {
 
         owner = new Owner();
 //        owner.setId(3);
-        owner.setFirstName("Test");
-        owner.setLastName("3");
+        owner.setFirstName("Gabriel");
+        owner.setLastName("Ramalho");
         this.ownerCrudService.save(owner);
 
         pet = new Pet();
@@ -66,20 +65,20 @@ public class DataLoader implements CommandLineRunner {
 
         Vet vet = new Vet();
 //        vet.setId(1);
-        vet.setFirstName("Test");
-        vet.setLastName("1");
+        vet.setFirstName("Margarida");
+        vet.setLastName("Pereira");
         this.vetCrudService.save(vet);
 
         vet = new Vet();
 //        vet.setId(2);
-        vet.setFirstName("Test");
-        vet.setLastName("1");
+        vet.setFirstName("Jose");
+        vet.setLastName("Costa");
         this.vetCrudService.save(vet);
 
         vet = new Vet();
 //        vet.setId(3);
-        vet.setFirstName("Test");
-        vet.setLastName("1");
+        vet.setFirstName("Rodrigo");
+        vet.setLastName("Costa");
         this.vetCrudService.save(vet);
 
         System.out.println("========================================================");
