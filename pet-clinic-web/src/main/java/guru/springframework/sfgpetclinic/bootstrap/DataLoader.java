@@ -11,23 +11,23 @@ import java.time.LocalDate;
 @Component
 public class DataLoader implements CommandLineRunner {
 
-    private OwnerCrudService ownerCrudService;
-    private PetCrudService petCrudServicel;
-    private VetCrudService vetCrudService;
+    private OwnerService ownerService;
+    private PetService petServicel;
+    private VetService vetService;
     private PetTypeService petTypeService;
     private SpecialityService specialityService;
     private VisitService visitService;
 
     @Autowired
-    public DataLoader(OwnerCrudService ownerCrudService,
-                      PetCrudService petCrudServicel,
-                      VetCrudService vetCrudService,
+    public DataLoader(OwnerService ownerService,
+                      PetService petServicel,
+                      VetService vetService,
                       PetTypeService petTypeService,
                       SpecialityService specialityService,
                       VisitService visitService) {
-        this.ownerCrudService = ownerCrudService;
-        this.petCrudServicel = petCrudServicel;
-        this.vetCrudService = vetCrudService;
+        this.ownerService = ownerService;
+        this.petServicel = petServicel;
+        this.vetService = vetService;
         this.petTypeService = petTypeService;
         this.specialityService = specialityService;
         this.visitService = visitService;
@@ -36,6 +36,14 @@ public class DataLoader implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
+        int size = petTypeService.findAll().size();
+
+        if (size == 0) {
+            loadData();
+        }
+    }
+
+    private void loadData() {
         PetType dog = new PetType();
         dog.setName("Dog");
 
@@ -52,47 +60,47 @@ public class DataLoader implements CommandLineRunner {
         Owner owner = new Owner();
         owner.setFirstName("Leandro");
         owner.setLastName("Costa");
-        Owner owner1 = this.ownerCrudService.save(owner);
+        Owner owner1 = this.ownerService.save(owner);
 
         Pet pet = new Pet();
         pet.setName("Panda");
         pet.setPetType(dogSaved);
         pet.setBirthDate(LocalDate.now());
         pet.setOwner(owner1);
-        Pet petSaved1 = this.petCrudServicel.save(pet);
+        Pet petSaved1 = this.petServicel.save(pet);
 
         owner1.addPets(pet);
-        this.ownerCrudService.update(owner1.getId(), owner1);
+        this.ownerService.update(owner1.getId(), owner1);
 
         owner = new Owner();
         owner.setFirstName("Juliana");
         owner.setLastName("Barbosa");
-        Owner owner2 = this.ownerCrudService.save(owner);
+        Owner owner2 = this.ownerService.save(owner);
 
         pet = new Pet();
         pet.setBirthDate(LocalDate.now());
         pet.setName("Jack Black");
         pet.setPetType(catSaved);
         pet.setOwner(owner2);
-        Pet petSaved2 = this.petCrudServicel.save(pet);
+        Pet petSaved2 = this.petServicel.save(pet);
 
         owner2.addPets(pet);
-        this.ownerCrudService.update(owner2.getId(), owner2);
+        this.ownerService.update(owner2.getId(), owner2);
 
         owner = new Owner();
         owner.setFirstName("Gabriel");
         owner.setLastName("Ramalho");
-        Owner owner3 = this.ownerCrudService.save(owner);
+        Owner owner3 = this.ownerService.save(owner);
 
         pet = new Pet();
         pet.setName("Godoy");
         pet.setPetType(birdSaved);
         pet.setBirthDate(LocalDate.now());
         pet.setOwner(owner3);
-        Pet petSaved3 = this.petCrudServicel.save(pet);
+        Pet petSaved3 = this.petServicel.save(pet);
 
         owner3.addPets(pet);
-        this.ownerCrudService.update(owner3.getId(), owner3);
+        this.ownerService.update(owner3.getId(), owner3);
 
         Speciality speciality = new Speciality();
         speciality.setDescription("Surgery");
@@ -111,19 +119,19 @@ public class DataLoader implements CommandLineRunner {
         vet.setLastName("Pereira");
         vet.addSpeciality(speciality1);
         vet.addSpeciality(speciality2);
-        this.vetCrudService.save(vet);
+        this.vetService.save(vet);
 
         vet = new Vet();
         vet.setFirstName("Jose");
         vet.setLastName("Costa");
         vet.addSpeciality(speciality3);
-        this.vetCrudService.save(vet);
+        this.vetService.save(vet);
 
         vet = new Vet();
         vet.setFirstName("Rodrigo");
         vet.setLastName("Costa");
         vet.addSpeciality(speciality2);
-        this.vetCrudService.save(vet);
+        this.vetService.save(vet);
 
         Visit visit = new Visit();
         visit.setDate(LocalDate.now());
