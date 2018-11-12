@@ -9,8 +9,8 @@ public class Vet extends Person {
 
     @ManyToMany
     @JoinTable(name = "vet_specialities",
-            joinColumns = @JoinColumn(name = "vet_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "speciality_id", referencedColumnName = "id"))
+            joinColumns = @JoinColumn(name = "vet_id"),
+            inverseJoinColumns = @JoinColumn(name = "speciality_id"))
     private Set<Speciality> specialities = new HashSet<>();
 
     public Set<Speciality> getSpecialities() {

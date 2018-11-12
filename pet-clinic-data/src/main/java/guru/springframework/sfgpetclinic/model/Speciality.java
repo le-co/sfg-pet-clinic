@@ -12,7 +12,7 @@ public class Speciality extends BaseEntity {
 
     private String description;
 
-    @ManyToMany
+    @ManyToMany(mappedBy = "specialities")
     private Set<Vet> vets = new HashSet<>();
 
     public String getDescription() {
