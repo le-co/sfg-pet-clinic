@@ -1,8 +1,11 @@
 package guru.springframework.sfgpetclinic.model;
 
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import java.util.HashSet;
 import java.util.Set;
 
+@Entity
 public class Owner extends Person {
 
     private String address;
@@ -11,6 +14,7 @@ public class Owner extends Person {
 
     private String telephone;
 
+    @OneToMany(mappedBy = "owner")
     private Set<Pet> pets = new HashSet<>();
 
     public String getAddress() {
@@ -45,7 +49,7 @@ public class Owner extends Person {
         this.pets = pets;
     }
 
-    public void addPets(Pet pet){
+    public void addPets(Pet pet) {
         this.pets.add(pet);
     }
 }
