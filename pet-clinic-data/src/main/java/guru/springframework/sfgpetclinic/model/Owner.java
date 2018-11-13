@@ -1,5 +1,6 @@
 package guru.springframework.sfgpetclinic.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import java.util.HashSet;
@@ -14,7 +15,7 @@ public class Owner extends Person {
 
     private String telephone;
 
-    @OneToMany(mappedBy = "owner")
+    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
     private Set<Pet> pets = new HashSet<>();
 
     public String getAddress() {

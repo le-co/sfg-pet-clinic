@@ -19,7 +19,7 @@ public class Pet extends BaseEntity {
 
     private LocalDate birthDate;
 
-    @OneToMany(mappedBy = "pet")
+    @OneToMany(mappedBy = "pet", cascade = CascadeType.ALL)
     private Set<Visit> visits;
 
     public String getName() {
