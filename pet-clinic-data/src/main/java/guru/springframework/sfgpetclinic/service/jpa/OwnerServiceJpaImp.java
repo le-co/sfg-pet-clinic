@@ -6,14 +6,16 @@ import guru.springframework.sfgpetclinic.repositories.OwnerRepository;
 import guru.springframework.sfgpetclinic.service.OwnerService;
 import guru.springframework.sfgpetclinic.service.PetService;
 import guru.springframework.sfgpetclinic.service.map.AbstractMapService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Profile("jpa")
+@Slf4j
 @Service
+@Profile("jpa")
 public class OwnerServiceJpaImp extends AbstractMapService<Owner, Integer> implements OwnerService {
 
     private OwnerRepository ownerRepository;
@@ -30,6 +32,7 @@ public class OwnerServiceJpaImp extends AbstractMapService<Owner, Integer> imple
 
     @Override
     public void removeById(Integer id) {
+        log.debug("Id to removed {} ", id);
         this.ownerRepository.deleteById(id);
     }
 
@@ -40,6 +43,8 @@ public class OwnerServiceJpaImp extends AbstractMapService<Owner, Integer> imple
 
     @Override
     public Owner update(Integer id, Owner object) {
+        log.debug(object.toString());
+
         Owner owner = this.ownerRepository.findById(id).get();
 
         owner.setLastName(object.getLastName());
@@ -54,6 +59,7 @@ public class OwnerServiceJpaImp extends AbstractMapService<Owner, Integer> imple
 
     @Override
     public Owner save(Owner object) {
+        log.debug(object.toString());
         return this.ownerRepository.save(object);
     }
 
