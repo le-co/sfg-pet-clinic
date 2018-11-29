@@ -11,6 +11,8 @@ import java.util.Set;
 @Entity
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Owner extends Person {
 
     private String address;
