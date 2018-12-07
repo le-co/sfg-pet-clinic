@@ -27,7 +27,7 @@ public class OwnerServiceJpaImp extends AbstractMapService<Owner, Integer> imple
 
     @Override
     public Owner findById(Integer id) {
-        return this.ownerRepository.findById(id).get();
+        return this.ownerRepository.findById(id).orElse(null);
     }
 
     @Override

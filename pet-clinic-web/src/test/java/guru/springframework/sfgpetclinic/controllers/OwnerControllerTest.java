@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
+import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.verifyZeroInteractions;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -70,6 +71,17 @@ class OwnerControllerTest {
                 .andExpect(status().isOk());
 
         verifyZeroInteractions(this.ownerService);
+    }
+
+    @Test
+    void findById() throws Exception {
+
+        when(this.ownerService.findById(anyInt())).thenReturn(new Owner());
+
+        mockMvc.perform(get("/owners/1"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("owners/show"))
+                .andExpect(model().attributeExists("owner"));
     }
 
 }
